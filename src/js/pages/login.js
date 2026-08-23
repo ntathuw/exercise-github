@@ -41,8 +41,8 @@ function parseRecords(text) {
 }
 
 const FILES = [
-  { url: 'js/data/user.txt', table: TABLES.user },
-  { url: 'js/data/account.txt', table: TABLES.account },
+  { url: '../js/data/user.txt', table: TABLES.user },
+  { url: '../js/data/account.txt', table: TABLES.account },
 ];
 
 function readText(url, callback) {

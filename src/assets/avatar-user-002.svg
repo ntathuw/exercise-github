@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Trần Thị B">
+  <defs><linearGradient id="g" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#bf3989"/><stop offset="1" stop-color="#f778ba"/></linearGradient></defs>
+  <circle cx="100" cy="100" r="100" fill="url(#g)"/>
+  <path d="M55 91c-8-58 82-72 91-7l-12 58H66Z" fill="#3d251e"/>
+  <circle cx="100" cy="82" r="37" fill="#f2c6a0"/>
+  <path d="M61 73c13-42 75-39 79 5-23-17-50-18-79-5Z" fill="#3d251e"/>
+  <path d="M35 200c7-53 35-75 65-75s58 22 65 75Z" fill="#7d1a58"/>
+  <text x="100" y="181" text-anchor="middle" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#fff">TB</text>
+</svg>

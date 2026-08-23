@@ -4,29 +4,54 @@
     <div class="header__top">
 
       <div class="header__brand">
-        <a class="header__logo" href="#"></a>
         <button class="header__menu" type="button"></button>
+        <a class="header__logo" href="#"></a>
       </div>
-
+      <div class="header__center">
+      <div class="header__username"></div>
       <div class="header__search-group">
-        <label class="header__search-label" for="global-search"></label>
-        <input class="header__search" id="global-search" type="search" autocomplete="off" />
+        <span class="header__search-label" id="global-search-label"></span>
+        <button class="header__search" type="button" aria-labelledby="global-search-label">
+          <span class="header__search-hint"></span>
+          <kbd class="header__search-key"></kbd>
+          <span class="header__search-hint"></span>
+        </button>
       </div>
-
+      </div>
       <div class="header__actions">
-        <button class="header__utility-icon" type="button"></button>
-        <!-- header__utility-icon x 5 -->
+        <button class="header__utility-icon header__utility-icon--copilot" type="button">
+          <svg class="header__utility-caret"></svg>
+        </button>
+        <span class="header__divider"></span>
+        <div class="header__utility-group">
+          <button class="header__utility-icon" type="button">
+            <svg class="header__utility-caret"></svg>
+          </button>
+          <button class="header__utility-icon" type="button"></button>
+          <!-- header__utility-icon x 4 trong group -->
+        </div>
         <img class="header__user-avatar" src="" alt="" />
       </div>
 
     </div>
 
     <nav class="profile-nav">
-      <a class="profile-nav__item profile-nav__item--overview" href="#"></a>
-      <a class="profile-nav__item profile-nav__item--repositories" href="#"></a>
-      <a class="profile-nav__item profile-nav__item--projects" href="#"></a>
-      <a class="profile-nav__item profile-nav__item--packages" href="#"></a>
-      <a class="profile-nav__item profile-nav__item--stars" href="#"></a>
+      <a class="profile-nav__item profile-nav__item--overview" href="#">
+        <svg class="profile-nav__icon"></svg>
+      </a>
+      <a class="profile-nav__item profile-nav__item--repositories" href="#">
+        <svg class="profile-nav__icon"></svg>
+        <span class="profile-nav__count"></span>
+      </a>
+      <a class="profile-nav__item profile-nav__item--projects" href="#">
+        <svg class="profile-nav__icon"></svg>
+      </a>
+      <a class="profile-nav__item profile-nav__item--packages" href="#">
+        <svg class="profile-nav__icon"></svg>
+      </a>
+      <a class="profile-nav__item profile-nav__item--stars" href="#">
+        <svg class="profile-nav__icon"></svg>
+      </a>
     </nav>
   </header>
 
@@ -44,9 +69,18 @@
 
       <div class="sidebar__actions">
         <button class="sidebar__edit-btn" type="button"></button>
-        <p class="sidebar__follow-icon"></p>
-        <a class="sidebar__link-icon" href="#"></a>
-        <a class="sidebar__link-icon" href="#"></a>
+        <p class="sidebar__follow-icon">
+          <a class="sidebar__follow-link" href="#">
+            <span class="sidebar__follow-count"></span>
+          </a>
+          <a class="sidebar__follow-link" href="#">
+            <span class="sidebar__follow-count"></span>
+          </a>
+        </p>
+        <div class="sidebar__link-icon"></div>
+        <!-- sidebar__link-icon x 4 -->
+        <a class="sidebar__link-icon sidebar__link-icon--url" href="#"></a>
+        <!-- sidebar__link-icon x 4 -->
       </div>
 
       <hr class="sidebar__divider" />
@@ -66,13 +100,13 @@
 
       <section class="repo-spacer">
         <h2 class="repo-spacer__title"></h2>
-        <button class="repo-spacer__customize-btn" type="button"></button>
+        <span class="repo-spacer__customize-btn"></span>
 
         <ul class="repo">
           <li class="repo-card">
             <a class="repo-card__name" href="#"></a>
             <span class="repo-card__visibility"></span>
-            <span class="repo-card__language"></span>
+            <p class="repo-card__description"></p>
           </li>
           <!-- repo-card x 6 -->
         </ul>
@@ -86,83 +120,139 @@
           <section class="contribution-graph">
             <h2 class="contribution-graph__count"></h2>
             <button class="contribution-graph__settings" type="button"></button>
-            <div class="contribution-graph__calendar"></div>
+            <div class="contribution-graph__frame">
+              <div class="contribution-graph__months">
+                <span class="contribution-graph__month contribution-graph__month--w5"></span>
+                <span class="contribution-graph__month"></span>
+                <!-- 12 thang: Jan Feb ... Dec. Modifier w5 cho 4 thang chiem 5 tuan -->
+              </div>
+              <div class="contribution-graph__body">
+                <div class="contribution-graph__weekdays">
+                  <span class="contribution-graph__weekday contribution-graph__weekday--mon"></span>
+                  <span class="contribution-graph__weekday contribution-graph__weekday--wed"></span>
+                  <span class="contribution-graph__weekday contribution-graph__weekday--fri"></span>
+                </div>
+                <div class="contribution-graph__calendar">
+                  <span class="contribution-graph__cell contribution-graph__cell--l0"></span>
+                  <span class="contribution-graph__cell contribution-graph__cell--l1"></span>
+                  <span class="contribution-graph__cell contribution-graph__cell--l2"></span>
+                  <span class="contribution-graph__cell contribution-graph__cell--l3"></span>
+                  <span class="contribution-graph__cell contribution-graph__cell--l4"></span>
+                  <!-- Tong cong 364 cell (52 tuan x 7 ngay). Moi cell mang 1 trong 5 modifier tren. -->
+                </div>
+              </div>
+              <div class="contribution-graph__legend">
+                <span class="contribution-graph__legend-label"></span>
+                <span class="contribution-graph__cell contribution-graph__cell--l0"></span>
+                <!-- 5 o mau l0..l4 -->
+                <span class="contribution-graph__legend-label"></span>
+              </div>
+            </div>
           </section>
 
           <section class="contribution-activity">
             <h2 class="contribution-activity__title-icon"></h2>
 
-            <div class="contribution-activity__period">
-              <h3 class="contribution-activity__period-header"></h3>
+            <!-- Khoi thang. Khoi dau hien san, cac khoi sau co thuoc tinh hidden,
+                 nut "Show more activity" mo dan tung khoi mot. -->
+            <div class="contribution-activity__list">
+              <div class="contribution-activity__period">
+                <h3 class="contribution-activity__period-header"></h3>
 
-              <!-- activity-item dang 1: nhieu dong repo + meta -->
-              <article class="activity-item">
-                <div class="activity-item__icon"></div>
-                <div class="activity-item__body">
-                  <div class="activity-item__header">
-                    <h4 class="activity-item__title"></h4>
-                    <button class="activity-item__expand-btn" type="button"></button>
-                  </div>
-                  <div class="activity-item__content">
-                    <div class="activity-item__line">
-                      <a class="activity-item__repo" href="#"></a>
-                      <span class="activity-item__meta"></span>
+                <!-- activity-item dang 1: repo + so commit + thanh tien do -->
+                <article class="activity-item">
+                  <div class="activity-item__icon"></div>
+                  <div class="activity-item__body">
+                    <div class="activity-item__header">
+                      <h4 class="activity-item__title"></h4>
+                      <button class="activity-item__expand-btn" type="button" aria-expanded="true">
+                        <svg class="activity-item__icon-fold"></svg>
+                        <svg class="activity-item__icon-unfold"></svg>
+                      </button>
                     </div>
-                    <!-- activity-item__line x 3 -->
+                    <div class="activity-item__content">
+                      <div class="activity-item__line">
+                        <a class="activity-item__repo" href="#"></a>
+                        <a class="activity-item__meta" href="#"></a>
+                        <span class="activity-item__bar">
+                          <span class="activity-item__bar-fill"></span>
+                        </span>
+                      </div>
+                      <!-- activity-item__line x 3 -->
+                    </div>
                   </div>
-                </div>
-              </article>
+                </article>
 
-              <!-- activity-item dang 2: dong co them ngon ngu va ngay -->
-              <article class="activity-item">
-                <div class="activity-item__icon"></div>
-                <div class="activity-item__body">
-                  <div class="activity-item__header">
-                    <h4 class="activity-item__title"></h4>
-                    <button class="activity-item__expand-btn" type="button"></button>
+                <!-- activity-item dang 2: repo + ngon ngu + ngay -->
+                <article class="activity-item">
+                  <div class="activity-item__icon"></div>
+                  <div class="activity-item__body">
+                    <div class="activity-item__header">
+                      <h4 class="activity-item__title"></h4>
+                      <button class="activity-item__expand-btn" type="button" aria-expanded="true">
+                        <svg class="activity-item__icon-fold"></svg>
+                        <svg class="activity-item__icon-unfold"></svg>
+                      </button>
+                    </div>
+                    <div class="activity-item__content">
+                      <div class="activity-item__line activity-item__line--lang">
+                        <a class="activity-item__repo" href="#"></a>
+                        <span class="activity-item__language">
+                          <span class="activity-item__lang-dot"></span>
+                        </span>
+                        <span class="activity-item__date"></span>
+                      </div>
+                      <!-- activity-item__line x 3 -->
+                    </div>
                   </div>
-                  <div class="activity-item__content">
-                    <div class="activity-item__line">
-                      <a class="activity-item__repo" href="#"></a>
-                      <span class="activity-item__language"></span>
+                </article>
+
+                <!-- activity-item dang 3: the pull request -->
+                <article class="activity-item">
+                  <div class="activity-item__icon"></div>
+                  <div class="activity-item__body">
+                    <div class="activity-item__header">
+                      <h4 class="activity-item__title"></h4>
                       <span class="activity-item__date"></span>
                     </div>
-                    <!-- activity-item__line x 3 -->
-                  </div>
-                </div>
-              </article>
-
-              <!-- activity-item dang 3: chua activity-card -->
-              <article class="activity-item">
-                <div class="activity-item__icon"></div>
-                <div class="activity-item__body">
-                  <div class="activity-item__header">
-                    <h4 class="activity-item__title"></h4>
-                    <span class="activity-item__date"></span>
-                  </div>
-                  <div class="activity-item__content">
-                    <div class="activity-card">
-                      <div class="activity-item__pj-icon"></div>
-                      <h5 class="activity-card__title"></h5>
-                      <p class="activity-card__description"></p>
-                      <span class="activity-card__meta"></span>
+                    <div class="activity-item__content">
+                      <div class="activity-card">
+                        <div class="activity-item__pr-icon"></div>
+                        <a class="activity-card__title" href="#"></a>
+                        <p class="activity-card__description"></p>
+                        <span class="activity-card__meta">
+                          <span class="activity-card__additions"></span>
+                          <span class="activity-card__deletions"></span>
+                          <span class="activity-card__diffstat">
+                            <span class="activity-card__diffstat-block activity-card__diffstat-block--add"></span>
+                            <span class="activity-card__diffstat-block activity-card__diffstat-block--del"></span>
+                            <span class="activity-card__diffstat-block"></span>
+                            <!-- tong cong 5 o -->
+                          </span>
+                          <span class="activity-card__lines"></span>
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </article>
+                </article>
 
+              </div>
+              <!-- contribution-activity__period x 3 (2 khoi sau mang thuoc tinh hidden) -->
             </div>
 
+
             <button class="contribution-activity__expand-icon" type="button"></button>
-            <p class="contribution-activity__guide"></p>
+            <p class="contribution-activity__guide">
+              <a class="contribution-activity__guide-link" href="#"></a>
+            </p>
           </section>
 
         </div>
 
         <nav class="year-selector">
-          <a class="year-selector__item year-selector__item--active" href="#"></a>
-          <a class="year-selector__item" href="#"></a>
-          <!-- year-selector__item x 5 -->
+          <a class="year-selector__item year-selector__item--active" href="#" data-year="2026" aria-current="page"></a>
+          <a class="year-selector__item" href="#" data-year=""></a>
+          <!-- year-selector__item x 4 nua (tong cong 6 o, ke ca o active) -->
         </nav>
 
       </section>

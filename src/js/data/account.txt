@@ -1,4 +1,5 @@
-{"accountId":"acc001","password":"khanh123","role":"user","userId":"u001"}
-{"accountId":"acc002","password":"phuc123","role":"user","userId":"u002"}
-{"accountId":"acc003","password":"thu123","role":"user","userId":"u003"}
-{"accountId":"acc004","password":"admin123","role":"admin","userId":"u004"}
+{"accountId":"acc_001","password":"Password123!","role":"user","userId":"user_001"}
+{"accountId":"acc_002","password":"Str0ngPass#22","role":"user","userId":"user_002"}
+{"accountId":"acc_003","password":"Ch4nge-Me-Pls","role":"user","userId":"user_003"}
+{"accountId":"acc_004","password":"GitDemo@2024","role":"user","userId":"user_004"}
+{"accountId":"acc_005","password":"H3lloWorld!!","role":"user","userId":"user_005"}

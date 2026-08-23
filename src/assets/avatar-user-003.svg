@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Lê Minh C">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#1f6feb"/><stop offset="1" stop-color="#39d353"/></linearGradient></defs>
+  <circle cx="100" cy="100" r="100" fill="url(#g)"/>
+  <circle cx="100" cy="80" r="37" fill="#e8b88f"/>
+  <path d="M60 71c8-39 74-42 81 7-20-10-49-16-81-7Z" fill="#111820"/>
+  <path d="M40 200c5-54 31-75 60-75s55 21 60 75Z" fill="#116329"/>
+  <circle cx="86" cy="82" r="3"/><circle cx="114" cy="82" r="3"/>
+  <text x="100" y="181" text-anchor="middle" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#fff">MC</text>
+</svg>

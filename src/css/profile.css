@@ -1,0 +1,1357 @@
+/* ===== Reset ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ===== Dark theme tokens ===== */
+:root {
+  --color-bg: #0d1117;
+  --color-bg-inset: #010409;
+  --color-bg-subtle: #161b22;
+  --color-border: #30363d;
+  --color-border-subtle: #21262d;
+  --color-fg: #e6edf3;
+  --color-fg-muted: #8b949e;
+  --color-accent: #2f81f7;
+  --color-hover: #30363d;
+
+  /* Bề ngang cột nhãn thứ (Mon/Wed/Fri) trong contribution graph.
+     Nhãn tháng phải thụt vào đúng bằng nó thì mới thẳng cột với lịch. */
+  --weekday-col: 28px;
+
+  /* Chiều cao hàng tiêu đề của contribution graph (dòng "N contributions..."
+     + nút Contribution settings) và khoảng cách xuống khung lịch.
+     year-selector dùng 2 số này để tụt xuống cho thẳng đỉnh khung lịch. */
+  --graph-header-height: 32px;
+  --graph-header-gap: 12px;
+}
+
+.profile-page {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+    Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ===== Header ===== */
+.header {
+  background: var(--color-bg-inset);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header__top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0 auto;
+  padding: 8px;
+  height: 64px;
+}
+
+.header__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header__center {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 16px;
+  justify-content: flex-end;
+}
+
+.header__username {
+  flex-shrink: 0;
+  margin-right: auto;
+  font-weight: 600;
+  color: var(--color-fg);
+}
+
+.header__logo {
+  display: inline-flex;
+  align-items: center;
+}
+
+.header__logo svg {
+  fill: var(--color-fg);
+}
+
+.header__menu {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  color: var(--color-fg);
+  cursor: pointer;
+}
+
+.header__menu:hover {
+  background: var(--color-hover);
+}
+
+.header__menu svg {
+  fill: var(--color-fg);
+}
+
+.header__search-group {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+/* Nhan chi de doc man hinh, khong hien thi */
+.header__search-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.header__search {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  width: 240px;
+  height: 32px;
+  padding: 0 8px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  color: var(--color-fg-muted);
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.header__search:hover {
+  border-color: var(--color-fg-muted);
+}
+
+.header__search svg {
+  flex-shrink: 0;
+  fill: currentColor;
+}
+
+.header__search:focus {
+  border-color: var(--color-accent);
+}
+
+.header__search-hint {
+  white-space: nowrap;
+}
+
+.header__search-key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.header__utility-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 6px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  color: var(--color-fg-muted);
+  cursor: pointer;
+}
+
+.header__utility-icon:hover {
+  background: var(--color-hover);
+  color: var(--color-fg);
+}
+
+.header__utility-icon svg {
+  fill: currentColor;
+}
+
+/* Mui ten xo xuong, nho hon icon chinh */
+.header__utility-caret {
+  width: 12px;
+  height: 12px;
+}
+
+
+.header__utility-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header__divider {
+  width: 1px;
+  height: 24px;
+  background: var(--color-border);
+}
+
+.header__utility-icon--copilot {
+  padding-right: 0;
+}
+
+.header__utility-icon--copilot .header__utility-caret {
+  box-sizing: content-box;
+  height: 30px;
+  padding: 0 4px;
+  border-left: 1px solid var(--color-border);
+}
+
+.header__user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.profile-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 auto;
+  padding: 0 8px;
+  height: 48px;
+  overflow-x: auto;
+}
+
+.profile-nav__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+  padding: 0 8px;
+  font-size: 14px;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+
+.profile-nav__item:hover {
+  color: var(--color-fg);
+}
+
+.profile-nav__icon {
+  flex-shrink: 0;
+  fill: currentColor;
+}
+
+.profile-nav__item--overview {
+  color: var(--color-fg);
+  border-bottom-color: #f78166;
+  font-weight: 600;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 296px 1fr;
+  gap: 24px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 32px;
+  align-items: start;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sidebar__identity {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar__avatar {
+  width: 296px;
+  height: 296px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+}
+
+.sidebar__name-bg {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.sidebar__username-bg {
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--color-fg-muted);
+}
+
+.sidebar__bio-bg {
+  color: var(--color-fg);
+}
+
+/*
+  Xep DOC. Tren trang profile CUA CHINH MINH, GitHub chi co MOT nut
+  "Edit profile" keo dai het chieu ngang cot; ben duoi la dong so nguoi
+  theo doi, khong phai nut Follow.
+*/
+.sidebar__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar__edit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 6px 16px;
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  color: var(--color-fg);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.sidebar__edit-btn:hover {
+  background: var(--color-hover);
+}
+
+.sidebar__follow-icon {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  color: var(--color-fg-muted);
+  font-size: 14px;
+}
+
+.sidebar__follow-icon svg {
+  flex-shrink: 0;
+  fill: currentColor;
+}
+
+.sidebar__follow-link {
+  color: var(--color-fg-muted);
+}
+
+.sidebar__follow-link:hover {
+  color: var(--color-accent);
+}
+
+.sidebar__follow-count {
+  color: var(--color-fg);
+  font-weight: 600;
+}
+
+.sidebar__link-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px;
+  color: var(--color-fg-muted);
+  width: fit-content;
+}
+
+.sidebar__link-icon[hidden] {
+  display: none;
+}
+
+.sidebar__link-icon svg {
+  fill: var(--color-fg-muted);
+}
+
+.sidebar__link-icon span {
+  color: var(--color-fg);
+}
+
+a.sidebar__link-icon span {
+  color: var(--color-fg);
+}
+
+a.sidebar__link-icon span:hover{
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.sidebar__divider {
+  border: 0;
+  border-top: 1px solid var(--color-border);
+}
+
+
+.achievement {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 16px;
+}
+
+.achievement__title-bg {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-fg);
+}
+
+/* Lưới 3 cột: hàng trên 3 badge, hàng dưới 2 — đúng bản vẽ.
+   Badge tự co theo bề rộng sidebar nhưng không vượt quá 64px. */
+.achievement__badge-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  justify-items: start;
+}
+
+.achievement__badge {
+  width: 100%;
+  max-width: 64px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: block;
+  transition: transform 0.1s ease-in-out;
+}
+
+.achievement__badge:hover {
+  transform: scale(1.06);
+}
+
+/* min-width:0 cho phép cột co lại nhỏ hơn nội dung bên trong.
+   Không có dòng này thì lưới lịch contribution 53 cột sẽ đẩy tràn ngang. */
+.main-content {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.repo-spacer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 8px 16px;
+}
+
+.repo-spacer__title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-fg);
+}
+
+.repo-spacer__customize-btn {
+  justify-self: end;
+  color: var(--color-accent);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.repo-spacer__customize-btn:hover {
+  text-decoration: underline;
+}
+
+/* 2 cột × 3 hàng — đúng bản vẽ. 6 thẻ xếp thành hai cột dọc. */
+.repo {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.repo-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-content: start;
+  gap: 8px;
+  min-width: 0;
+  padding: 16px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+}
+
+.repo-card__name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--color-accent);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.repo-card__name:hover {
+  text-decoration: underline;
+}
+
+.repo-card__visibility {
+  justify-self: end;
+  padding: 0 7px;
+  border: 1px solid var(--color-border);
+  border-radius: 2em;
+  color: var(--color-fg-muted);
+  font-size: 12px;
+  line-height: 18px;
+}
+
+
+.repo-card__description {
+  grid-column: 1 / -1;
+  margin: 0;
+  min-width: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: var(--color-fg-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+
+.contribution {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 24px;
+  align-items: start;
+}
+
+.contribution__content {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contribution-graph {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: var(--graph-header-height) auto;
+  align-items: center;
+  gap: var(--graph-header-gap);
+  min-width: 0;
+}
+
+.contribution-graph__count {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-fg);
+}
+
+.contribution-graph__settings {
+  justify-self: end;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 0;
+  background: transparent;
+  border: 0;
+  color: var(--color-fg-muted);
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.contribution-graph__settings:hover {
+  color: var(--color-accent);
+}
+
+.contribution-graph__settings svg {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+}
+
+/* Lưới 52 tuần × 7 ngày.
+   grid-auto-flow: column -> ô điền từ trên xuống rồi mới sang cột kế,
+   đúng thứ tự của GitHub (mỗi cột là một tuần). */
+
+/*
+  Khung bao ngoài. Viền và padding chuyển từ __calendar ra ĐÂY, vì GitHub
+  bọc cả nhãn tháng, nhãn thứ, lưới lịch và chú thích Less/More trong CÙNG
+  một khung. overflow-x cũng nằm ở đây để 4 phần cuộn ngang cùng nhau —
+  để riêng trên __calendar thì nhãn tháng sẽ đứng yên còn lịch chạy, lệch nhau.
+*/
+.contribution-graph__frame {
+  grid-column: 1 / -1;
+  padding: 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+/*
+  Nhãn tháng. Đặt trên lưới 52 cột trùng với 52 tuần của lịch, mỗi tháng
+  chiếm 4 tuần, 4 tháng dài chiếm 5 tuần (5+4+4 x4 = 52) -> nhãn rơi đúng
+  vào khoảng tuần của tháng đó, không phải chia đều cho có.
+*/
+.contribution-graph__months {
+  display: grid;
+  grid-template-columns: repeat(52, 11px);
+  gap: 2px;
+  margin-left: calc(var(--weekday-col) + 3px);
+  margin-bottom: 4px;
+  width: max-content;
+  color: var(--color-fg-muted);
+  font-size: 12px;
+}
+
+.contribution-graph__month {
+  grid-column: span 4;
+}
+
+.contribution-graph__month--w5 {
+  grid-column: span 5;
+}
+
+.contribution-graph__body {
+  display: flex;
+  gap: 3px;
+  width: max-content;
+}
+
+/* Cột nhãn thứ: 7 hàng trùng 7 ngày, chỉ 3 hàng có chữ (Mon/Wed/Fri) */
+.contribution-graph__weekdays {
+  display: grid;
+  grid-template-rows: repeat(7, 11px);
+  gap: 3px;
+  width: var(--weekday-col);
+  color: var(--color-fg-muted);
+  font-size: 10px;
+  line-height: 11px;
+}
+
+.contribution-graph__weekday {
+  white-space: nowrap;
+}
+
+.contribution-graph__weekday--mon { grid-row: 2; }
+.contribution-graph__weekday--wed { grid-row: 4; }
+.contribution-graph__weekday--fri { grid-row: 6; }
+
+/* Chú thích độ đậm, nằm góc phải dưới khung */
+.contribution-graph__legend {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 3px;
+  margin-top: 8px;
+  color: var(--color-fg-muted);
+  font-size: 12px;
+}
+
+.contribution-graph__legend-label {
+  margin: 0 4px;
+}
+
+.contribution-graph__calendar {
+  display: grid;
+  grid-template-rows: repeat(7, 11px);
+  grid-auto-flow: column;
+  grid-auto-columns: 11px;
+  gap: 2px;
+}
+
+/* Đặt kích thước ngay trên ô: trong lịch thì lưới đã định 11px, nhưng ô
+   dùng lại ở chú thích Less/More lại nằm ngoài lưới, không có dòng này
+   sẽ co về 0. */
+.contribution-graph__cell {
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+  outline: 1px solid rgba(255, 255, 255, 0.04);
+  outline-offset: -1px;
+}
+
+/* 5 mức đậm nhạt — bảng màu GitHub dark.
+   Đổi bảng màu chỉ cần sửa 5 dòng này, không phải sửa 364 ô trong HTML. */
+.contribution-graph__cell--l0 { background: #161b22; }
+.contribution-graph__cell--l1 { background: #0e4429; }
+.contribution-graph__cell--l2 { background: #006d32; }
+.contribution-graph__cell--l3 { background: #26a641; }
+.contribution-graph__cell--l4 { background: #39d353; }
+
+
+.contribution-activity {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.contribution-activity__title-icon {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-fg);
+}
+
+.contribution-activity__period {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: linear-gradient(var(--color-border), var(--color-border)) 15px 0 / 1px 100% no-repeat;
+}
+
+.contribution-activity__period-header {
+  margin: 0 0 8px;
+  padding-left: 40px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-fg);
+}
+
+
+.activity-item {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  gap: 8px;
+  align-items: start;
+  padding: 8px 0;
+  min-width: 0;
+}
+
+.activity-item__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  color: var(--color-fg-muted);
+}
+
+.activity-item__icon svg {
+  fill: currentColor;
+}
+
+.activity-item__body {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 4px;
+}
+
+.activity-item__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.activity-item__title {
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-fg);
+}
+
+.activity-item__expand-btn {
+  flex: 0 0 auto;
+  display: inline-flex;
+  padding: 3px 6px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: var(--color-fg-muted);
+  cursor: pointer;
+}
+
+.activity-item__expand-btn[aria-expanded="true"] .activity-item__icon-unfold,
+.activity-item__expand-btn[aria-expanded="false"] .activity-item__icon-fold {
+  display: none;
+}
+
+.activity-item__expand-btn:hover {
+  background: var(--color-hover);
+  border-color: var(--color-border);
+  color: var(--color-fg);
+}
+
+.activity-item__expand-btn svg {
+  fill: currentColor;
+}
+
+.activity-item__content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.activity-item__line {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 4px 8px;
+  min-width: 0;
+  font-size: 14px;
+}
+
+/* GitHub gach chan SAN ca hai link tren dong nay, khong doi hover moi hien */
+.activity-item__repo {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.activity-item__repo:hover {
+  color: var(--color-fg);
+}
+
+/*
+  Dong CO ngon ngu dung cot giua RONG CO DINH. Neu de auto/1fr thi be rong
+  cot 1 phu thuoc do dai ten repo cua tung dong -> cham mau moi dong mot vi
+  tri, nhin rang cua. Co dinh 140px thi cham thang cot nhu GitHub.
+  Dong dang commit KHONG dung modifier nay, vi so commit phai dinh sat ten repo.
+*/
+.activity-item__line--lang {
+  grid-template-columns: minmax(0, 1fr) 140px auto;
+}
+
+.activity-item__meta,
+.activity-item__language,
+.activity-item__date {
+  justify-self: start;
+  color: var(--color-fg-muted);
+  font-size: 12px;
+}
+
+/* So commit la LINK dan toi danh sach commit -> chu xam, gach chan, hover xanh */
+.activity-item__meta {
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+.activity-item__meta:hover {
+  color: var(--color-accent);
+}
+
+/* Ngay luon o cot cuoi, sat le phai. min-width de "Aug 8" va "Aug 15"
+   khong lam lech cot dung truoc no. */
+.activity-item__date {
+  justify-self: end;
+  min-width: 48px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.activity-item__bar {
+  justify-self: end;
+  display: block;
+  width: 160px;
+  max-width: 40vw;
+  height: 8px;
+}
+
+.activity-item__bar-fill {
+  display: block;
+  width: var(--bar-fill, 0%);
+  min-width: 8px;
+  height: 100%;
+  border-radius: 4px;
+  background: var(--bar-color, var(--color-accent));
+}
+
+/* Ten ngon ngu di kem mot cham tron mau — dung inline-flex de cham thang hang chu */
+.activity-item__language {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/*
+  Cham mau ngon ngu. Mau khong viet cung trong CSS ma nhan qua bien --dot-color
+  dat trong style cua the cha, vi moi ngon ngu mot mau — sau nay JS render se
+  gan bien nay, khong phai them class moi cho tung ngon ngu.
+*/
+.activity-item__lang-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--dot-color, var(--color-fg-muted));
+}
+
+/* --- dạng 3: thẻ repo được star --- */
+
+.activity-card {
+  display: grid;
+  grid-template-columns: 16px minmax(0, 1fr);
+  gap: 4px 8px;
+  min-width: 0;
+  padding: 16px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+}
+
+/* Icon pull request trong the — GitHub to no mau tim */
+.activity-item__pr-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #a371f7;
+}
+
+.activity-item__pr-icon svg {
+  fill: currentColor;
+}
+
+/* Tieu de PR: chu sang, dam, gach chan — khong phai mau xanh link thuong */
+.activity-card__title {
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-fg);
+  text-decoration: underline;
+}
+
+.activity-card__title:hover {
+  color: var(--color-accent);
+}
+
+.activity-card__description,
+.activity-card__meta {
+  grid-column: 2 / -1;
+  margin: 0;
+  min-width: 0;
+  color: var(--color-fg-muted);
+}
+
+.activity-card__description { font-size: 14px; }
+
+/*
+  Dong cuoi cua the: +40 -33 [o o o o o] lines changed - 3 comments.
+  Dung inline-flex de 5 o vuong nam thang hang voi chu.
+*/
+.activity-card__meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  font-size: 12px;
+}
+
+.activity-card__additions {
+  color: #3fb950;
+  font-weight: 600;
+}
+
+.activity-card__deletions {
+  color: #f85149;
+  font-weight: 600;
+}
+
+/* 5 o vuong ti le them/xoa. O khong co modifier = phan con lai, mau xam. */
+.activity-card__diffstat {
+  display: inline-flex;
+  gap: 2px;
+  margin: 0 2px;
+}
+
+.activity-card__diffstat-block {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--color-border);
+}
+
+.activity-card__diffstat-block--add { background: #3fb950; }
+.activity-card__diffstat-block--del { background: #f85149; }
+
+.activity-card__lines {
+  color: var(--color-fg);
+  font-weight: 600;
+}
+
+/* --- chân khối activity --- */
+
+/* Keo dai bang dung khoi .contribution-activity, khong co lai o goc trai */
+.contribution-activity__expand-icon {
+  align-self: stretch;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 6px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  color: var(--color-accent);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.contribution-activity__expand-icon:hover {
+  background: var(--color-hover);
+}
+
+.contribution-activity__expand-icon svg {
+  fill: currentColor;
+}
+
+/*
+  Vo boc cac khoi thang. Can mot the rieng vi khi doi nam, JS ve lai TOAN BO
+  danh sach activity — phai co dung mot cho de thay noi dung, khong dung cham
+  toi tieu de va nut "Show more activity" ben ngoai.
+*/
+.contribution-activity__list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contribution-activity__guide {
+  margin: 0;
+  color: var(--color-fg-muted);
+  font-size: 12px;
+}
+
+.contribution-activity__guide-link {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.contribution-activity__guide-link:hover {
+  text-decoration: underline;
+}
+
+
+/* Cột chọn năm, xếp DỌC bên phải khối contribution — đúng bản vẽ. */
+/*
+  Tụt xuống cho thẳng ĐỈNH KHUNG LỊCH, không phải thẳng đỉnh cả khối.
+  Khối contribution bắt đầu bằng dòng tiêu đề "N contributions in the last
+  year"; year-selector là anh em của khối đó nên mặc định bị kéo lên ngang
+  dòng tiêu đề, lệch xuống dưới ~43px so với khung lịch.
+  Tính bằng biến chứ không gõ số cứng: sửa chiều cao tiêu đề thì đây tự theo.
+*/
+.year-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 0 0 auto;
+  width: 116px;
+  margin-top: calc(var(--graph-header-height) + var(--graph-header-gap));
+}
+
+/*
+  Moi muc chiem tron be ngang cot nen o mau xanh cua nam dang chon la mot
+  khoi to, thang hang voi cac nam khac — dung GitHub. De padding nho va
+  width theo noi dung thi o mau chi om sat 4 chu so, nhin nho hon han.
+*/
+.year-selector__item {
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: var(--color-fg);
+  font-size: 14px;
+  text-align: left;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.year-selector__item:hover {
+  background: var(--color-hover);
+}
+
+.year-selector__item--active {
+  background: var(--color-accent);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.year-selector__item--active:hover {
+  background: var(--color-accent);
+}
+
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 16px;
+  max-width: 1280px;
+  margin: 40px auto 0;
+  padding: 40px 24px;
+  border-top: 1px solid var(--color-border);
+}
+
+.footer__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+.footer__logo {
+  display: inline-flex;
+  color: var(--color-fg-muted);
+}
+
+.footer__logo svg {
+  fill: currentColor;
+}
+
+.footer__copyright {
+  color: var(--color-fg-muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+
+
+.footer__link {
+  color: var(--color-fg-muted);
+  font-size: 12px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.footer__link:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.profile-nav__count {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 0 6px;
+  background: var(--color-border-subtle);
+  border-radius: 2em;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+
+/* --- Máy tính bảng và màn hình hẹp --- */
+@media (max-width: 1024px) {
+  /* Nguồn gốc của việc tràn ngang: sidebar cố định 296px.
+     Gộp thành một cột, sidebar lên trên. */
+  .main {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 24px 16px;
+  }
+
+  .sidebar {
+    /* Danh tính nằm ngang cho đỡ tốn chiều cao */
+    display: grid;
+    grid-template-columns: 96px minmax(0, 1fr);
+    gap: 8px 16px;
+    align-items: start;
+  }
+
+  .sidebar__identity {
+    display: contents;
+  }
+
+  .sidebar__avatar {
+    grid-row: span 3;
+    width: 96px;
+    height: 96px;
+  }
+
+  .sidebar__actions,
+  .sidebar__divider,
+  .achievement {
+    grid-column: 1 / -1;
+  }
+
+  .achievement__badge-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  /* Cột chọn năm chuyển từ dọc sang ngang, xuống dưới nội dung */
+  .contribution {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .year-selector {
+    flex-direction: row;
+    flex-wrap: wrap;
+    order: -1;
+    width: auto;
+    margin-top: 0;
+  }
+
+  .year-selector__item {
+    width: auto;
+  }
+}
+
+/* --- Điện thoại --- */
+@media (max-width: 768px) {
+  .header__top {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 8px 12px;
+  }
+
+  .header__center {
+    order: 3;
+    flex: 1 0 100%;
+  }
+
+  .header__actions {
+    margin-left: auto;
+  }
+
+  .header__search {
+    width: 32px;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .header__search-hint,
+  .header__search-key,
+  .header__divider {
+    display: none;
+  }
+
+
+  .header__utility-icon--copilot {
+    display: none;
+  }
+
+  .header__utility-group .header__utility-icon:not(:last-child) {
+    display: none;
+  }
+
+  .profile-nav {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .profile-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .profile-nav__item {
+    white-space: nowrap;
+  }
+
+  /* Repo về một cột */
+  .repo {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .repo-spacer {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .repo-spacer__customize-btn {
+    justify-self: start;
+  }
+
+  .achievement__badge-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .activity-item {
+    grid-template-columns: 24px minmax(0, 1fr);
+  }
+
+  .activity-item__icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .contribution-activity__period-header {
+    padding-left: 32px;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px 16px;
+  }
+
+  .footer__links {
+    gap: 8px 12px;
+  }
+}

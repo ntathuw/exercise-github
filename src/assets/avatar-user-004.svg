@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Phạm Thu D">
+  <defs><linearGradient id="g" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#8250df"/><stop offset="1" stop-color="#db61a2"/></linearGradient></defs>
+  <circle cx="100" cy="100" r="100" fill="url(#g)"/>
+  <path d="M55 94c-9-62 84-73 91-7l-14 52H66Z" fill="#191015"/>
+  <circle cx="100" cy="81" r="37" fill="#f0bf99"/>
+  <path d="M61 72c15-40 73-38 79 6-19-13-49-20-79-6Z" fill="#191015"/>
+  <path d="M36 200c7-53 34-75 64-75s57 22 64 75Z" fill="#5a32a3"/>
+  <text x="100" y="181" text-anchor="middle" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#fff">TD</text>
+</svg>
