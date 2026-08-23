@@ -217,7 +217,7 @@
                     </div>
                     <div class="activity-item__content">
                       <div class="activity-card">
-                        <div class="activity-item__pj-icon"></div>
+                        <div class="activity-item__pr-icon"></div>
                         <a class="activity-card__title" href="#"></a>
                         <p class="activity-card__description"></p>
                         <span class="activity-card__meta">

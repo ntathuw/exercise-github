@@ -958,14 +958,14 @@ a.sidebar__link-icon span:hover{
 }
 
 /* Icon pull request trong the — GitHub to no mau tim */
-.activity-item__pj-icon {
+.activity-item__pr-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   color: #a371f7;
 }
 
-.activity-item__pj-icon svg {
+.activity-item__pr-icon svg {
   fill: currentColor;
 }
 
