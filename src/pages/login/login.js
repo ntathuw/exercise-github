@@ -41,8 +41,8 @@ function parseRecords(text) {
 }
 
 const FILES = [
-  { url: '../js/data/user.txt', table: TABLES.user },
-  { url: '../js/data/account.txt', table: TABLES.account },
+  { url: '../../data/user.txt', table: TABLES.user },
+  { url: '../../data/account.txt', table: TABLES.account },
 ];
 
 function readText(url, callback) {
@@ -159,7 +159,7 @@ form.addEventListener('submit', (event) => {
             localStorage.setItem('currentUser', JSON.stringify(userRecord));
           }
 
-          window.location.href = 'profile.html';
+          window.location.href = '../profile/profile.html';
         });
       }
     });

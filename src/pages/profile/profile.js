@@ -184,7 +184,7 @@
 
   var raw = localStorage.getItem('currentUser');
   if (!raw) {
-    window.location.href = 'login.html';
+    window.location.href = '../login/login.html';
     return;
   }
 
@@ -192,7 +192,7 @@
   try {
     record = JSON.parse(raw);
   } catch (error) {
-    window.location.href = 'login.html';
+    window.location.href = '../login/login.html';
     return;
   }
 
@@ -230,10 +230,14 @@
   var avatars = document.querySelectorAll('.sidebar__avatar, .header__user-avatar');
   Array.prototype.forEach.call(avatars, function (avatar) {
     avatar.alt = user.displayName || user.username || 'User avatar';
+    // if (user.avatarUrl) {
+    //   var avatarUrl = user.avatarUrl;
+    //   if (avatarUrl.indexOf('../shared/assets/') === 0) avatarUrl = '../../' + avatarUrl;
+    //   avatar.src = avatarUrl;
+    // }
     if (user.avatarUrl) {
-      var avatarUrl = user.avatarUrl;
-      if (avatarUrl.indexOf('assets/') === 0) avatarUrl = '../' + avatarUrl;
-      avatar.src = avatarUrl;
+      var fileName = user.avatarUrl.split('/').pop();
+      avatar.src = '../../shared/assets/' + fileName;
     }
   });
 
